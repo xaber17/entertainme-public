@@ -5,20 +5,20 @@ const client = new MongoClient(dbUrl, { useNewUrlParser: true, useUnifiedTopolog
 const dbName = process.env.DATABASE_NAME
 
 function connect(callback) {
-  client.connect(function (err) {
-    if (err) {
-      console.log('Failed To Connect DB', err)
-    }
-    else {
-      console.log('Success Connect DB', dbName)
-      db = client.db(dbName)
-    }
-    callback(err)
-  })
+    client.connect(function (err) {
+        if (err) {
+            console.log('Failed To Connect DB', err)
+        }
+        else {
+            console.log('Success Connect DB', dbName)
+            db = client.db(dbName)
+        }
+        callback(err)
+    })
 }
 function getDatabase() {
-  return db
+    return db
 }
 module.exports = {
-  connect, getDatabase
+    connect, getDatabase
 }

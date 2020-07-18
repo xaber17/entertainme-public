@@ -1,24 +1,24 @@
 require('dotenv').config()
 const { getDatabase } = require('../config')
 const dbCollection = process.env.COLLECTION_NAME
-const Movies = getDatabase().collection(dbCollection)
+const Tv = getDatabase().collection(dbCollection)
 const { ObjectId } = require('mongodb')
 
-class MoviesModel {
+class TvModel {
   static find() {
-    return Movies.find().toArray()
+    return Tv.find().toArray()
   }
 
   static findById(id) {
-    return Movies.findOne({ _id: ObjectId(id) })
+    return Tv.findOne({ _id: ObjectId(id) })
   }
 
   static create(newMovie) {
-    return Movies.insertOne(newMovie)
+    return Tv.insertOne(newMovie)
   }
 
   static findByIdAndUpdate(id, updateData) {
-    return Movies.findOneAndUpdate(
+    return Tv.findOneAndUpdate(
       { _id: ObjectId(id) },
       {
         $set: {
@@ -33,8 +33,8 @@ class MoviesModel {
   }
 
   static findByIdAndDelete(id) {
-    return Movies.deleteOne({ _id: ObjectId(id) })
+    return Tv.deleteOne({ _id: ObjectId(id) })
   }
 }
 
-module.exports = MoviesModel
+module.exports = TvModel

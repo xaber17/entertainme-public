@@ -1,8 +1,8 @@
-const Movies = require('../models/movies');
+const TV = require('../models/tv');
 
-class Controller {
+class TvController {
   static find(req, res, next) {
-    Movies.find()
+    TV.find()
       .then(result => {
         res.status(200).json(result)
       })
@@ -12,7 +12,7 @@ class Controller {
   };
 
   static findById(req, res, next) {
-    Movies.findById(req.params.id)
+    TV.findById(req.params.id)
       .then(result => {
         res.status(200).json(result);
       })
@@ -22,7 +22,7 @@ class Controller {
   }
 
   static add(req, res, next) {
-    Movies.create(req.body)
+    TV.create(req.body)
       .then(result => {
         res.status(201).json(result);
       })
@@ -32,7 +32,7 @@ class Controller {
   };
 
   static update(req, res, next) {
-    Movies.findByIdAndUpdate(req.params.id, req.body)
+    TV.findByIdAndUpdate(req.params.id, req.body)
       .then(result => {
         res.status(200).json(result);
       })
@@ -42,7 +42,7 @@ class Controller {
   }
 
   static delete(req, res, next) {
-    Movies.findByIdAndDelete(req.params.id)
+    TV.findByIdAndDelete(req.params.id)
       .then(result => {
         res.status(200).json(result)
       })
@@ -52,4 +52,4 @@ class Controller {
   }
 }
 
-module.exports = Controller;
+module.exports = TvController;
