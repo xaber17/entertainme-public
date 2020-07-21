@@ -32,6 +32,7 @@ class Controller {
   };
 
   static update(req, res, next) {
+    console.log(req.params.id)
     Movies.findByIdAndUpdate(req.params.id, req.body)
       .then(result => {
         res.status(200).json(result);
