@@ -38,23 +38,30 @@ export default () => {
     tags: []
   })
 
+  if (loadingMovie) {
+    return <p>Loading....</p>
+  }
+
+  if (errorMovie) {
+    return <p>Error....</p>
+  }
+
   return (
     <div className="align-middle text-center">
       <h3>Home</h3>
-      <div class="d-flex flex-row bd-highlight mb-3 justify-content-around">
-        <div class="p-2 bd-highlight">
+      <div className="d-flex flex-row bd-highlight mb-3 justify-content-around">
+        <div className="p-2 bd-highlight">
           <h5>Movies</h5>
-          {JSON.stringify(Movies)}
-          {/* {Movies.map((movie, idx) => {
-            return <Card 
-              key={idx}
-              movie={movie}
-            />
-          })} */}
+          {/* {JSON.stringify(Movies)} */}
+          {Movies && Movies.Movies.map((film, idx) => {
+            return <Card key={idx} film={film} />
+          })}
         </div>
-        <div class="p-2 bd-highlight">
+        <div className="p-2 bd-highlight">
           <h5>TV Series</h5>
-          {JSON.stringify(TvSeries)}
+          {TvSeries && TvSeries.TvSeries.map((film, idx) => {
+            return <Card key={idx} film={film} />
+          })}
         </div>
       </div>
     </div>
